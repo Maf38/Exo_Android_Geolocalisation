@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtTitre"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="chercherVille"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtLatitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtLatitude" />
+
+        <EditText
+            android:id="@+id/editTxtLatitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:text="@string/editTxtLatitude"   />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtLongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtLongitude" />
+
+        <EditText
+            android:id="@+id/editTxtLongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:text="@string/editTxtLongitude" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Chercher"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:onClick="chercherLieu"
+        android:text="@string/btnChercher" />
+
+    <TextView
+        android:id="@+id/EditTxtResultat"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:background="@drawable/cartefrance"
+        android:text="@string/txtResultat"
+        tools:background="@drawable/cartefrance" />
+
+
+
+</LinearLayout>

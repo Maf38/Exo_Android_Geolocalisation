@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Geolocalisation</string>
+    <string name="txtTitre">Chercher Ville</string>
+    <string name="txtLatitude">Latitude</string>
+    <string name="editTxtLatitude" />
+    <string name="txtLongitude">Longitude</string>
+    <string name="editTxtLongitude" />
+    <string name="btnChercher">Chercher</string>
+    <string name="txtResultat">resultat</string>
+</resources>
