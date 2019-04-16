@@ -29,4 +29,5 @@ dependencies {
     implementation files('src/main/java/lib/utils-json-common-3.0.0.jar')
     implementation files('src/main/java/lib/utils-json-handler-2.0.0.jar')
     implementation files('src/main/java/lib/utils-json-parser-3.0.0.jar')
+    implementation files('src/main/java/lib/apache-commons-lang.jar')
 }

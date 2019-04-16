@@ -3,26 +3,23 @@ package com.exercice.maf.geolocalisation;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.JsonReader;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
-
-import org.json.JSONObject;
-import org.w3c.dom.Text;
+import com.localisation.Json.bean.Feature;
+import com.localisation.Json.bean.Localisation;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -98,6 +95,7 @@ public class AsyncTaskGeoSearch extends AsyncTask<Void, Void, Boolean> {
          */
         try {
         progressDialog.dismiss();
+        /*
         Log.d("testREST",inputstream.toString());
          /*   //JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = new JSONObject(inputstream);
@@ -107,13 +105,35 @@ public class AsyncTaskGeoSearch extends AsyncTask<Void, Void, Boolean> {
 
             */
 
-         Log.d("testREST",convertInputStreamToString(inputstream));
+         //Log.d("testREST",convertInputStreamToString(inputstream));
+
+         //test avec java bean
+            Gson gson = new Gson();
+            //recuperation du JSon en string foruni par le WEB service
+            String json=convertInputStreamToString(inputstream);
+
+            //Recupération du bean Localisation correspondant au JSON
+            Localisation loc= gson.fromJson(json, Localisation.class);
+            Log.d("testREST",loc.toString());
+
+            //on récupère le premier feature où sont stockées les propriétés de la coordonnée cherchée
+            List<Feature> listeFeature = loc.getFeatures();
+            Feature premiereFeature= listeFeature.get(0);
+            Log.d("testREST","la ville est :"+ premiereFeature.getProperties().getCity());
+            Toast.makeText(context,"la ville située sur ces coordonnées est: " + premiereFeature.getProperties().getCity(), Toast.LENGTH_SHORT).show();
+
+            Log.d("testREST","this is a city result:"+ loc.toString());
+
 
         } catch (UnsupportedEncodingException e) {
             Log.d("testREST",e.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.d("testREST",e.toString());
         }
+        catch (Exception e) {
+            Log.d("testREST",e.toString());
+        }
+
 
 
     }
