@@ -3,6 +3,7 @@ package com.exercice.maf.geolocalisation;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ import javax.net.ssl.HttpsURLConnection;
 //Aide= https://api-adresse.data.gouv.fr/reverse/?lon=2.37&lat=48.357
 
 public class AsyncTaskGeoSearch extends AsyncTask<Void, Void, Boolean> {
+
     // On a besoin du contexte pour replacer l'AsyncTask
     private Context context;
     // On récupère l'activité d'appel, au cas où besoin dans le traitement
@@ -36,12 +38,14 @@ public class AsyncTaskGeoSearch extends AsyncTask<Void, Void, Boolean> {
     private String latitude;
     private ProgressDialog progressDialog;
     private InputStream inputstream;
+    private String action; //String permettant de savoir quel action effectuer à l'issu de la recherche de coordonnée
 
-    public AsyncTaskGeoSearch(Activity activity, String longitude,String latitude) {
+    public AsyncTaskGeoSearch(Activity activity, String longitude,String latitude,String action) {
         this.context = activity.getApplicationContext();
         this.activity = activity;
         this.longitude=longitude;
         this.latitude=latitude;
+        this.action = action;
 
     }
 
@@ -120,10 +124,56 @@ public class AsyncTaskGeoSearch extends AsyncTask<Void, Void, Boolean> {
             List<Feature> listeFeature = loc.getFeatures();
             Feature premiereFeature= listeFeature.get(0);
             Log.d("testREST","la ville est :"+ premiereFeature.getProperties().getCity());
-            Toast.makeText(context,"la ville située sur ces coordonnées est: " + premiereFeature.getProperties().getCity(), Toast.LENGTH_SHORT).show();
+
+
+            String ville= premiereFeature.getProperties().getCity();
+            switch (action){
+                case "chercher":
+                    Toast.makeText(context,"la ville située sur ces coordonnées est: " + premiereFeature.getProperties().getCity(), Toast.LENGTH_SHORT).show();
+
+
+                    break;
+                case "web"://lancement d'une page goole avec les images de la ville
+                   Intent intentWeb = new Intent(activity,ActivityWEB.class);
+                   intentWeb.putExtra("longitude",longitude);
+                   intentWeb.putExtra("latitude",latitude);
+
+                   if(ville!=null) {// cas où une ville a été trouvée
+                        intentWeb.putExtra("ville",ville);
+                   }
+                   else{//si on a pas trouvé de ville on travaille avec la ville de Paris
+                       intentWeb.putExtra("ville","Paris");
+                   }
+
+                   intentWeb.putExtra("url","https://www.google.fr/search?hl=fr&tbm=isch&sa=1&q="+ville);
+                   activity.startActivity(intentWeb);
+                   break;
+                case "map"://lancement d'une google map avec les coordonnées
+                    Intent intentMap = new Intent(activity,ActivityWEB.class);
+                    intentMap.putExtra("longitude",longitude);
+                    intentMap.putExtra("latitude",latitude);
+
+                    if(ville!=null) {// cas où une ville a été trouvée
+                        intentMap.putExtra("ville",ville);
+                    }
+                    else{//si on a pas trouvé de ville on travaille avec la ville de Paris
+                        intentMap.putExtra("ville","Paris");
+                    }
+
+                    intentMap.putExtra("url","http://maps.google.fr/maps?q="+latitude+","+longitude+"&iwloc=A&hl=fr");
+
+                    activity.startActivity(intentMap);
+                    Toast.makeText(context,"http://maps.google.fr/maps?q="+latitude+","+longitude+"&iwloc=A&hl=fr", Toast.LENGTH_SHORT).show();
+                    break;
+
+
+                default :
+
+                break;
+
+            }
 
             Log.d("testREST","this is a city result:"+ loc.toString());
-
 
         } catch (UnsupportedEncodingException e) {
             Log.d("testREST",e.toString());
@@ -131,6 +181,7 @@ public class AsyncTaskGeoSearch extends AsyncTask<Void, Void, Boolean> {
             Log.d("testREST",e.toString());
         }
         catch (Exception e) {
+            Toast.makeText(context,"coordonnées non exploitables...", Toast.LENGTH_SHORT).show();
             Log.d("testREST",e.toString());
         }
 

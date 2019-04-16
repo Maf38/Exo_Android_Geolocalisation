@@ -6,5 +6,7 @@
     <string name="txtLongitude">Longitude</string>
     <string name="editTxtLongitude" />
     <string name="btnChercher">Chercher</string>
-    <string name="txtResultat">resultat</string>
+    <string name="txtResultat"> API data.gouv.fr =>France Only!</string>
+    <string name="btnImage">Image</string>
+    <string name="btnCarte">Carte</string>
 </resources>

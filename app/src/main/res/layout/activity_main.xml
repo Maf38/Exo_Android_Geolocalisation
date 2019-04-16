@@ -59,17 +59,43 @@
             android:ems="10"
             android:inputType="numberDecimal"
             android:text="@string/editTxtLongitude" />
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/Chercher"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:clickable="true"
-        android:onClick="chercherLieu"
-        android:text="@string/btnChercher" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="afficherWeb"
+            android:text="@string/btnImage" />
+
+        <Button
+            android:id="@+id/Chercher"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="chercherLieu"
+            android:text="@string/btnChercher" />
+
+        <Button
+            android:id="@+id/btnCarte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="afficherMap"
+            android:text="@string/btnCarte" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/EditTxtResultat"

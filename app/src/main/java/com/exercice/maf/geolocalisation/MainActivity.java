@@ -31,11 +31,27 @@ public class MainActivity extends AppCompatActivity {
         String txtLongitude= longitude.getText().toString();
         String txtLatitude=latitude.getText().toString();
 
-        AsyncTaskGeoSearch asyncTaskGeoSearch = new AsyncTaskGeoSearch(this,txtLongitude,txtLatitude);
+        AsyncTaskGeoSearch asyncTaskGeoSearch = new AsyncTaskGeoSearch(this,txtLongitude,txtLatitude,"chercher");
         asyncTaskGeoSearch.execute();
 
 
-
-
     }
+
+    public void afficherWeb(View v){
+        String txtLongitude= longitude.getText().toString();
+        String txtLatitude=latitude.getText().toString();
+
+        AsyncTaskGeoSearch asyncTaskGeoSearch = new AsyncTaskGeoSearch(this,txtLongitude,txtLatitude,"web");
+        asyncTaskGeoSearch.execute();
+    }
+
+    public void afficherMap(View v){
+
+        String txtLongitude= longitude.getText().toString();
+        String txtLatitude=latitude.getText().toString();
+
+        AsyncTaskGeoSearch asyncTaskGeoSearch = new AsyncTaskGeoSearch(this,txtLongitude,txtLatitude,"map");
+        asyncTaskGeoSearch.execute();
+    }
+
 }
