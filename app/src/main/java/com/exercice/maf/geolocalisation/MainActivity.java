@@ -1,5 +1,8 @@
 package com.exercice.maf.geolocalisation;
 
+import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
 
         AsyncTaskGeoSearch asyncTaskGeoSearch = new AsyncTaskGeoSearch(this,txtLongitude,txtLatitude,"map");
         asyncTaskGeoSearch.execute();
+    }
+
+    public void afficherGPS(View v){
+
+        Intent intent = new Intent(this,ActivityGPS.class);
+        startActivity(intent);
     }
 
 }

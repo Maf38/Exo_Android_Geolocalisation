@@ -9,4 +9,13 @@
     <string name="txtResultat"> API data.gouv.fr =>France Only!</string>
     <string name="btnImage">Image</string>
     <string name="btnCarte">Carte</string>
+    <string name="btnPosition">Afficher position</string>
+    <string name="txtdrawGps">Localisation par GPS!</string>
+    <string name="editTxtLatitudeGPS" />
+    <string name="txtLongitudeGPS" />
+    <string name="editTxtLongitudeGPS" />
+    <string name="txtAltitudeGPS">Altitude</string>
+    <string name="editTxtAltitudeGPS" />
+    <string name="btnSource">Choisir la source</string>
+    <string name="btnswitch">switch GPS</string>
 </resources>

@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_orange_dark"
+    android:background="@android:color/holo_green_light"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/txtTitre"
+        android:id="@+id/txtTitreGps"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
-        android:text="chercherVille" />
+        android:text="Ou sommes nous" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,20 +21,43 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txtLatitude"
+            android:id="@+id/txtLatitudeGPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/txtLatitude" />
 
         <EditText
-            android:id="@+id/editTxtLatitude"
+            android:id="@+id/editTxtLatitudeGPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:text="@string/editTxtLatitude" />
+            android:text="@string/editTxtLatitudeGPS" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtLongitudeGPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtLongitude" />
+
+        <EditText
+            android:id="@+id/editTxtLongitudeGPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:text="@string/editTxtLongitudeGPS" />
 
     </LinearLayout>
 
@@ -45,74 +68,61 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txtLongitude"
+            android:id="@+id/txtAltitudeGPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/txtLongitude" />
+            android:text="@string/txtAltitudeGPS" />
 
         <EditText
-            android:id="@+id/editTxtLongitude"
+            android:id="@+id/editTxtAltitudeGPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:text="@string/editTxtLongitude" />
+            android:text="@string/editTxtAltitudeGPS" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnImage"
+            android:id="@+id/btnSource"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
-            android:onClick="afficherWeb"
-            android:text="@string/btnImage" />
+            android:text="@string/btnSource" />
 
         <Button
-            android:id="@+id/Chercher"
+            android:id="@+id/btnPosition"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
-            android:onClick="chercherLieu"
-            android:text="@string/btnChercher" />
+            android:text="@string/btnPosition" />
 
         <Button
             android:id="@+id/btnCarte"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
-            android:onClick="afficherMap"
             android:text="@string/btnCarte" />
-
     </LinearLayout>
 
     <TextView
-        android:id="@+id/EditTxtResultat"
+        android:id="@+id/EditTxtGPS"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:background="@drawable/cartefrance"
-        android:text="@string/txtResultat"
-        tools:background="@drawable/cartefrance" />
-
-    <Button
-        android:id="@+id/btnSwitch"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="afficherGPS"
-        android:text="@string/btnswitch" />
+        android:background="@drawable/gps_image"
+        android:text="@string/txtdrawGps" />
 
 
 </LinearLayout>
