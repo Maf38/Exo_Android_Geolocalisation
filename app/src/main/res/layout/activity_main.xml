@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:text="@string/editTxtLatitude" />
+            android:text="@string/editTxtLatitudeGPS" />
 
     </LinearLayout>
 
@@ -58,7 +58,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:text="@string/editTxtLongitude" />
+            android:text="@string/editTxtLongitudeGPS" />
 
     </LinearLayout>
 

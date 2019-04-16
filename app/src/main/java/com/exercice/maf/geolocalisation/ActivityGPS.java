@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class ActivityGPS extends AppCompatActivity implements LocationListener {
@@ -36,6 +37,17 @@ public class ActivityGPS extends AppCompatActivity implements LocationListener {
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
     }
 
+
+    public void chercherAdresse (View v){
+
+        String txtLongitude= longitude.getText().toString();
+        String txtLatitude=latitude.getText().toString();
+
+        AsyncTaskGeoSearch asyncTaskGeoSearch = new AsyncTaskGeoSearch(this,txtLongitude,txtLatitude,"adresse");
+        asyncTaskGeoSearch.execute();
+
+
+    }
 
     @Override
     public void onLocationChanged(Location location) {
@@ -68,4 +80,8 @@ public class ActivityGPS extends AppCompatActivity implements LocationListener {
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
+
+
 }

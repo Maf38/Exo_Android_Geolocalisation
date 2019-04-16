@@ -166,6 +166,15 @@ public class AsyncTaskGeoSearch extends AsyncTask<Void, Void, Boolean> {
                     Toast.makeText(context,"http://maps.google.fr/maps?q="+latitude+","+longitude+"&iwloc=A&hl=fr", Toast.LENGTH_SHORT).show();
                     break;
 
+                case "adresse"://affichage de l'adresse relevé par le GPS
+                    String town = premiereFeature.getProperties().getCity();
+                    String street=premiereFeature.getProperties().getStreet();
+                    String number =premiereFeature.getProperties().getHousenumber();
+                    String zipCode = premiereFeature.getProperties().getPostcode();
+                   
+
+                    Toast.makeText(context,"Vous êtes situé "+ number+ " "+ street+ ", "+zipCode+ " "+town+".", Toast.LENGTH_LONG).show();
+                    break;
 
                 default :
 
