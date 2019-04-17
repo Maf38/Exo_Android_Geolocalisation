@@ -1,17 +1,23 @@
 package com.exercice.maf.geolocalisation;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.List;
+
+import static android.location.LocationManager.*;
 
 public class ActivityGPS extends AppCompatActivity implements LocationListener {
 
@@ -19,6 +25,7 @@ public class ActivityGPS extends AppCompatActivity implements LocationListener {
     private TextView longitude;
     private TextView altitude;
     private LocationManager lm;
+    private String choix_source="GPS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +42,9 @@ public class ActivityGPS extends AppCompatActivity implements LocationListener {
 
             return;
         }
+
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        //lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
     }
 
 
@@ -91,7 +100,32 @@ public class ActivityGPS extends AppCompatActivity implements LocationListener {
 
     }
 
+    public void afficherSource (View v){
+        List<String> providers = lm.getProviders(true);
+        final String[] sources = new String[providers.size()];
+        int i =0;
+        //on stock le nom de ces source dans un tableau de string
+        for(String provider : providers) {
+            sources[i++] = provider;
+            Log.d("testGPS", provider);
+        }
 
+
+        new AlertDialog.Builder(this).setItems(sources,
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        findViewById(R.id.btnSource).setEnabled(true);
+                    //on stock le choix de la source choisi
+                        choix_source = sources[which];
+                    //on modifie la barre de titre de l'application
+                        setTitle(String.format("%s - %s",
+                                getString(R.string.app_name), choix_source));
+
+                    }
+                }).create().show();
+    }
 
 
 }

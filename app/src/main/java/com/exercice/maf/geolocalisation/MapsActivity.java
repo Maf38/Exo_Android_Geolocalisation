@@ -3,6 +3,7 @@ package com.exercice.maf.geolocalisation;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,12 +37,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Log.d("testMap","on passe dans onMapready()");
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                 new LatLng(latitude,longitude), 15));
+       /*googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(latitude, longitude))
+                .title("Coucou")
+        );*/
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
 }
