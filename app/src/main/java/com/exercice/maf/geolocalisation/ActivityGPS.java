@@ -1,6 +1,7 @@
 package com.exercice.maf.geolocalisation;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -47,6 +48,15 @@ public class ActivityGPS extends AppCompatActivity implements LocationListener {
         asyncTaskGeoSearch.execute();
 
 
+    }
+
+    public void afficherGoogleMap(View v){
+        String txtLongitude= longitude.getText().toString();
+        String txtLatitude=latitude.getText().toString();
+        Intent intentGoogleMap = new Intent(this,MapsActivity.class);
+        intentGoogleMap.putExtra("longitude",txtLongitude);
+        intentGoogleMap.putExtra("latitude",txtLatitude);
+        startActivity(intentGoogleMap);
     }
 
     @Override

@@ -114,6 +114,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
+            android:onClick="afficherGoogleMap"
             android:text="@string/btnCarte" />
     </LinearLayout>
 
